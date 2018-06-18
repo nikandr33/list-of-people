@@ -21,6 +21,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {}
 
   onNew() {
+    this.listModel = new List();
     this.submitType = 'Save';
     this.showNew = true;
   }
@@ -41,6 +42,7 @@ export class ListComponent implements OnInit {
     this.listModel = Object.assign({}, this.list[this.selectedRow]);
     this.submitType = 'Update';
     this.showNew = true;
+    console.log(this.listModel);
   }
 
   delete(item: List) {
