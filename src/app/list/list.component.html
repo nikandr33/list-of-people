@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Control</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registration of registrations; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ registration.firstName }}</td>
+          <td>{{ registration.age }}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+  <br>
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="firstname-input" class="col-2 col-form-label">Name</label>
+        <div class="col-6">
+          <input class="form-control" type="text" [(ngModel)]="regModel.firstName" name="firstName">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastname-input" class="col-2 col-form-label">Age</label>
+        <div class="col-6">
+          <input class="form-control" type="text" [(ngModel)]="regModel.age" name="age">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary" (click)="onNew()">Add New</button>
+  </div>
+</div>
